@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Clock</title>
+
+<style>
+body {
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4, #a18cd1, #fbc2eb);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial Black;
+}
+
+.container {
+    text-align: center;
+    border: 5px solid cyan; /* إطار */
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px cyan;
+    background: rgba(0,0,0,0.6);
+}
+
+#clock {
+    color: cyan;
+    font-size: 60px;
+}
+
+#date {
+    margin-top: 15px;
+    color: white;
+    font-size: 25px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <div id="clock"></div>
+    <div id="date"></div>
+</div>
+
+<script>
+setInterval(function() {
+    var now = new Date();
+
+    // الوقت
+    var time = now.toLocaleTimeString();
+    document.getElementById("clock").innerHTML = time;
+
+    // الأيام و الأشهر
+    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+    var day = days[now.getDay()];
+    var month = months[now.getMonth()];
+    var date = now.getDate();
+    var year = now.getFullYear();
+
+    document.getElementById("date").innerHTML =
+        day + " , " + date + " " + month + " " + year;
+
+}, 1000);
+</script>
+
+</body>
+</html>
